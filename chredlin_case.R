@@ -44,6 +44,13 @@ abline(lm(theft~race, chredlin))
 #Full Model to decide on what actually matters
 model3 <- lm(involact ~ race + fire + theft + age + income, chredlin)
 summary (model3)
+#A common practice is to use log(income) instead of income, that helps solve the skewness 
+#1. Income is also a measure where elasticity depends hence taking log helps deal with the elasticity
+#2. Income is more multipliable than addable
+#Accouting for that
+model3 <- lm(involact ~ race + fire + theft + age + log(income), chredlin)
+summary (model3)
+
 #Income is an interesting case here because not everybody in our group here has an equally distributed income but to talk about race and consider the story to check if redlining is actually happening lets focus on the rest of the residual plot for now
 plot(fitted(model3), residuals(model3))
 qqnorm(residuals(model3))
@@ -60,7 +67,7 @@ summary(model4)
 model5 <- lm(involact ~ race+fire+theft+age, chredlin, subset = -c(6,24)) 
 summary(model5) #here, fire seems significant and has a really low p (or high t whatever)
 
-model6 <- lm(involact ~ race+fire+income, chredlin, subset = -c(6,24))
+model6 <- lm(involact ~ race+fire+ income, chredlin, subset = -c(6,24))
 summary(model6) #With income accounted, race p value is 0.0667
 
 model7 <- lm(involact ~ race+fire, chredlin, subset = -c(6,24))
