@@ -22,7 +22,8 @@ summary(chredlin)
 #Relevance of North and South
 par(mfrow=c(2,3))
 for (i in 1:6) stripchart (chredlin [,i], main=names(chredlin)[i], method="jitter") #jitter hides overplotting
-
+par(mfrow=c(1,1))
+pairs(chredlin)
 #Deep Dive 1: Involact and Race
 model1 <- lm(involact~race, data = chredlin)
 #summary(model1)
@@ -53,6 +54,7 @@ summary (model3)
 
 #Income is an interesting case here because not everybody in our group here has an equally distributed income but to talk about race and consider the story to check if redlining is actually happening lets focus on the rest of the residual plot for now
 plot(fitted(model3), residuals(model3))
+abline(h=0)
 qqnorm(residuals(model3))
 qqline(residuals(model3))
 #Nothing that stands out as a outlier yet, moving on
