@@ -61,7 +61,7 @@ qqline(residuals(model3))
 
 chredlin [c(6,24),] #High theft and high fire zip codes
 
-model4 <- lm(involact ~ race+fire+theft+age+income, chredlin, subset = -c(6,24)) #Excluding the high fire and theft points 
+model4 <- lm(involact ~ race+fire+theft+age+log(income), chredlin, subset = -c(6,24)) #Excluding the high fire and theft points 
 summary(model4)
 #I had my doubts on income but here fire, theft (and somehow even age) seem to have become insignificant
 
@@ -69,7 +69,7 @@ summary(model4)
 model5 <- lm(involact ~ race+fire+theft+age, chredlin, subset = -c(6,24)) 
 summary(model5) #here, fire seems significant and has a really low p (or high t whatever)
 
-model6 <- lm(involact ~ race+fire+ income, chredlin, subset = -c(6,24))
+model6 <- lm(involact ~ race+fire+ log(income), chredlin, subset = -c(6,24))
 summary(model6) #With income accounted, race p value is 0.0667
 
 model7 <- lm(involact ~ race+fire, chredlin, subset = -c(6,24))
@@ -89,11 +89,7 @@ summary (model.south)
 
 
 
-#Short conclusion: whereas there is some relationship between the fire scare and involact, there still seems to be a strong evidence of race for redlining
+#Short conclusion: 
 
-#Some other questions
-#1. Number of people affected is small to be generalized
-#2. Missing variable, say people having performed poorly during their insurnace interviews etc
-#3. We saw the division between north and south, what if it is further divided into even smaller segments and we see this is prevalent in a very small part in the north and not widespread at all?
 
 #Hence despite having a very solid relation here, we still cannot be sure enough to simply link race to redlining because the above questions remain unaswered based on the data we have.
