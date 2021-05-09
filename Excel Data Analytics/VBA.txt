@@ -1,0 +1,105 @@
+Store data -> Manipulate Data -> Output
+Object oriented programming: Everything is an object and has some properties ie what it is , they also have methods ie can do etc, each method leads to an event
+Object (Property, Method, Event)
+
+Excel Object Model is all about the language
+Application Object: Top level
+1. Properties: Version ie 2016 etc, Captions, Default file path, Workbooks
+2. Methods: Calculate, check spelling, quit
+3. Events: SheetCalculate, NewWorkbook, WorkbookBeforeClose
+Workbook Object
+1. Properties: Name, Sheet, Saved
+2. Methods: PrintOut, Close
+3. Events: BeforeClose, NewSheet, BeforeSave
+Worksheet Object
+1. Properties: Name, UsedRange(all used not existing, even deleted), Visible
+2. Methods: Activate (currently working ie displayed on screen), Copy, Delete
+3. Event: Activate, Deactivate, Change
+
+I. Go to View, View Macros to start writing
+Here you can select if the macro needs to apply to individual sheets or the whole workbook.
+If you have multiple workbooks open, you'll see all of them there
+Here, you'll have actions, events and properties
+
+To see what all you can do on the objects, 
+Object Browser>Search for something, say workbook> Look at "Members of workbook"
+These members are everything you can do on it.
+
+In the VBA editor>Tools>Project properties: you can write down what it does and make it password protected
+
+
+Subroutine != Functions
+can write values but cannot use subroutines in formula
+can use function in formula
+
+In your code module, every Sub routine works differently, you can chose which one you want to work with.
+You can also make declerations like global variables here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Code Appendix:
+
+1. Writing a macro that saves if not saved
+
+Private Sub Workbook_BeforeClose(Cancel As Boolean)If Me.Saved = False Then Me.SaveEnd Sub
+
